@@ -1,0 +1,25 @@
+{
+  "name": "pintabot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bilyha/PintaBot.git"
+  },
+  "author": "Ilya Babich",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bilyha/PintaBot/issues"
+  },
+  "homepage": "https://github.com/Bilyha/PintaBot#readme",
+  "dependencies": {
+    "koa": "^2.7.0",
+    "koa-bodyparser": "^4.2.1",
+    "koa-router": "^7.4.0",
+    "node-vk-bot-api": "2.4.11"
+  }
+}
