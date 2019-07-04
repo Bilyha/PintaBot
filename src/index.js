@@ -3,7 +3,7 @@ const Router = require("koa-router");
 const bodyParser = require("koa-bodyparser");
 const Bot = require("node-vk-bot-api");
 
-const { port, token, groupId } = require("./config");
+const { port, token, groupId, confirmation } = require("./config");
 
 const app = new Koa();
 const router = new Router();
