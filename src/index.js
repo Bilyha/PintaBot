@@ -21,6 +21,10 @@ bot.on(ctx => {
 //   //   confirmation: process.env.CONFIRMATION
 // });
 
+router.get("/", async ctx => {
+  ctx.set("Cache-Control", "no-cache");
+  ctx.body = { status: "OK" };
+});
 router.post("/", bot.webhookCallback);
 
 app.use(bodyParser);
