@@ -23,7 +23,7 @@ class PintaBot {
     this.bot.on(ctx => {
       console.log("RESPONSE!");
 
-      ctx.reply("Hello!");
+      ctx.reply("Hello from other side!");
     });
 
     this.bot.startPolling();
