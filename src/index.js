@@ -28,7 +28,7 @@ router.get("/", async ctx => {
 });
 router.post("/", bot.webhookCallback);
 
-app.use(bodyParser);
+app.use(bodyParser());
 app.use(router.routes());
 console.log(port);
 
