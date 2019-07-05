@@ -28,7 +28,7 @@ class PintaBot {
       ctx.reply("Hello from other side!");
     });
 
-    // this.bot.startPolling();
+    this.bot.startPolling();
 
     // this.bot.command("start", ctx => {
     //   this.bot.sendMessage([102036098, 64081057], "Hello!");
