@@ -29,7 +29,7 @@ class PintaBot {
   }
 
   sendMessageToUser(id, msg) {
-    console.log(this.bot);
+    console.log(this.bot.getLongPollParams());
 
     this.bot.sendMessage(id, msg);
   }
