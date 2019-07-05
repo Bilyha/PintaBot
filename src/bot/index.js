@@ -30,6 +30,12 @@ class PintaBot {
       ctx.reply("Hello");
     });
   }
+
+  sendMessageToUser(id, msg) {
+    console.log(this.bot);
+
+    this.bot.sendMessage(id, msg);
+  }
 }
 
 module.exports = PintaBot;
