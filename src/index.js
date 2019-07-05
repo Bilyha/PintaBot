@@ -26,7 +26,9 @@ router.get("/", async ctx => {
   ctx.set("Cache-Control", "no-cache");
   ctx.body = { status: "OK" };
 });
-router.post("/", bot.webhookCallback);
+router.post("/", async ctx => {
+  ctx.body = confirmation;
+});
 
 app.use(bodyParser());
 app.use(router.routes());
