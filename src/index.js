@@ -1,32 +1,16 @@
 const Koa = require("koa");
 const Router = require("koa-router");
 const bodyParser = require("koa-bodyparser");
-const Bot = require("node-vk-bot-api");
+const PintaBot = require("./bot");
 
 const { port, token, groupId, confirmation } = require("./config");
 
 const app = new Koa();
 const router = new Router();
+const pintaBot = new PintaBot(token, groupId, confirmation);
 
-const bot = new Bot({
-  token: token,
-  group_id: groupId,
-  confirmation: confirmation
-});
-
-bot.on(ctx => {
-  console.log("RESPONSE!");
-
-  ctx.reply("Hello!");
-});
-
-bot.startPolling(() => {
-  console.log("Bot Started!");
-});
-// const bot = new Bot({
-//   token: process.env.TOKEN
-//   //   confirmation: process.env.CONFIRMATION
-// });
+pintaBot.setupBot();
+pintaBot.runBot();
 
 router.get("/", async ctx => {
   ctx.set("Cache-Control", "no-cache");
