@@ -6,18 +6,22 @@ class PintaBot {
     this.groupId = groupId;
     this.confirmation = confirmation;
     this.secretKey = secretKey;
+
+    this.runBot = this.runBot.bind(this);
+    this.setupBot = this.setupBot.bind(this);
+    this.sendMessageToUser = this.sendMessageToUser.bind(this);
   }
 
-  setupBot = () => {
+  setupBot() {
     this.bot = new Bot({
       token: this.token,
       group_id: this.groupId,
       confirmation: this.confirmation,
       secret: this.secretKey
     });
-  };
+  }
 
-  runBot = () => {
+  runBot() {
     if (!this.bot) {
       throw new Error("Create bot before run");
     }
@@ -36,11 +40,11 @@ class PintaBot {
     // this.bot.startPolling(() => {
     //   console.log(1);
     // });
-  };
+  }
 
-  sendMessageToUser = (id, msg) => {
+  sendMessageToUser(id, msg) {
     this.bot.sendMessage(id, msg);
-  };
+  }
 }
 
 module.exports = PintaBot;
