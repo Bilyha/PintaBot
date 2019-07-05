@@ -20,15 +20,17 @@ class PintaBot {
       throw new Error("Create bot before run");
     }
 
-    // this.bot.on(ctx => {
-    //   console.log("RESPONSE!");
+    this.bot.on(ctx => {
+      console.log("RESPONSE!");
 
-    //   ctx.reply("Hello!");
-    // });
-
-    this.bot.command("start", ctx => {
-      this.bot.sendMessage([102036098, 64081057], "Hello!");
+      ctx.reply("Hello!");
     });
+
+    this.bot.startPolling();
+
+    // this.bot.command("start", ctx => {
+    //   this.bot.sendMessage([102036098, 64081057], "Hello!");
+    // });
   }
 
   sendMessageToUser(id, msg) {
