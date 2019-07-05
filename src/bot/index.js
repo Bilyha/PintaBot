@@ -23,14 +23,11 @@ class PintaBot {
     }
 
     this.bot.command("start", ctx => {
-      this.bot.sendMessage([102036098, 64081057], "Hello from other side!");
+      ctx.reply("New Hello!");
     });
-    this.bot.startPolling();
   }
 
-  sendMessageToUser(id, msg) {
-    console.log(this.bot.getLongPollParams());
-
+  async sendMessageToUser(id, msg) {
     this.bot.sendMessage(id, msg);
   }
 }
