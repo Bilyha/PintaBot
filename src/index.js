@@ -19,6 +19,10 @@ bot.on(ctx => {
 
   ctx.reply("Hello!");
 });
+
+bot.startPolling(() => {
+  console.log("Bot Started!");
+});
 // const bot = new Bot({
 //   token: process.env.TOKEN
 //   //   confirmation: process.env.CONFIRMATION
@@ -34,6 +38,5 @@ router.post("/", async ctx => {
 
 app.use(bodyParser());
 app.use(router.routes());
-console.log(port);
 
 app.listen(port);
