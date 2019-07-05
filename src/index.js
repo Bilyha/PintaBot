@@ -15,6 +15,8 @@ const bot = new Bot({
 });
 
 bot.on(ctx => {
+  console.log("RESPONSE!");
+
   ctx.reply("Hello!");
 });
 // const bot = new Bot({
