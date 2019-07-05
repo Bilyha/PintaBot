@@ -30,5 +30,6 @@ router.post("/", bot.webhookCallback);
 
 app.use(bodyParser);
 app.use(router.routes());
+console.log(port);
 
 app.listen(port);
