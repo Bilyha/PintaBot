@@ -10,7 +10,8 @@ const router = new Router();
 
 const bot = new Bot({
   token: token,
-  group_id: groupId
+  group_id: groupId,
+  confirmation: confirmation
 });
 
 bot.on(ctx => {
