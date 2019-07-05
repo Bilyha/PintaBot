@@ -22,11 +22,11 @@ class PintaBot {
       throw new Error("Create bot before run");
     }
 
-    this.bot.event("message_new", ctx => {
-      console.log(ctx);
+    // this.bot.event("message_new", ctx => {
+    //   console.log(ctx);
 
-      ctx.reply("New hello!");
-    });
+    //   ctx.reply("New hello!");
+    // });
     // this.bot.command("start", ctx => {
     //   console.log(ctx);
 
