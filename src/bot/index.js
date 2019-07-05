@@ -1,4 +1,6 @@
 const Bot = require("node-vk-bot-api");
+const vkApi = require("node-vk-bot-api/lib/api");
+const { getUserName } = require("../utils/userInfo");
 
 class PintaBot {
   constructor(token, groupId, confirmation, secretKey) {
@@ -10,6 +12,7 @@ class PintaBot {
     this.runBot = this.runBot.bind(this);
     this.setupBot = this.setupBot.bind(this);
     this.sendMessageToUser = this.sendMessageToUser.bind(this);
+    this.getUsersProfile = this.getUsersProfile.bind(this);
   }
 
   setupBot() {
@@ -26,10 +29,13 @@ class PintaBot {
       throw new Error("Create bot before run");
     }
 
-    this.bot.event("message_new", ctx => {
-      console.log(ctx);
+    this.bot.event("message_new", async ctx => {
+      const userId = ctx.message.from_id;
+      const { response } = await this.getUsersProfile(userId);
 
-      ctx.reply("New hello!");
+      const userName = getUserName(response, userId);
+
+      ctx.reply(`Hello my dear friend, ${userName}!`);
     });
     this.bot.startPolling(() => {
       console.log("Bot started");
@@ -38,6 +44,13 @@ class PintaBot {
 
   sendMessageToUser(id, msg) {
     this.bot.sendMessage(id, msg);
+  }
+
+  async getUsersProfile(userId) {
+    return await vkApi("users.get", {
+      access_token: this.token,
+      user_ids: [userId]
+    });
   }
 }
 
