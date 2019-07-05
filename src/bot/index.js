@@ -1,17 +1,19 @@
 const Bot = require("node-vk-bot-api");
 
 class PintaBot {
-  constructor(token, groupId, confirmation) {
+  constructor(token, groupId, confirmation, secretKey) {
     this.token = token;
     this.groupId = groupId;
     this.confirmation = confirmation;
+    this.secretKey = secretKey;
   }
 
   setupBot() {
     this.bot = new Bot({
       token: this.token,
       group_id: this.groupId,
-      confirmation: this.confirmation
+      confirmation: this.confirmation,
+      secret: this.secretKey
     });
   }
 

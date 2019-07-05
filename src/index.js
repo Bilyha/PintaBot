@@ -3,11 +3,11 @@ const Router = require("koa-router");
 const bodyParser = require("koa-bodyparser");
 const PintaBot = require("./bot");
 
-const { port, token, groupId, confirmation } = require("./config");
+const { port, token, groupId, confirmation, secretKey } = require("./config");
 
 const app = new Koa();
 const router = new Router();
-const pintaBot = new PintaBot(token, groupId, confirmation);
+const pintaBot = new PintaBot(token, groupId, confirmation, secretKey);
 
 pintaBot.setupBot();
 pintaBot.runBot();
