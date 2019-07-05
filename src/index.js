@@ -11,7 +11,7 @@ const pintaBot = new PintaBot(token, groupId, confirmation);
 
 pintaBot.setupBot();
 pintaBot.runBot();
-pintaBot.sendMessageToUser("bilyha", "Hello Ilya!");
+pintaBot.sendMessageToUser(102036098, "Hello Ilya!");
 
 router.get("/", async ctx => {
   ctx.set("Cache-Control", "no-cache");
