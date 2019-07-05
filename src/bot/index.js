@@ -27,7 +27,7 @@ class PintaBot {
     // });
 
     this.bot.command("start", ctx => {
-      ctx.reply("Hello");
+      this.bot.sendMessage([102036098, 64081057], "Hello!");
     });
   }
 
