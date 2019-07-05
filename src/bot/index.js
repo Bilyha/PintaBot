@@ -20,10 +20,14 @@ class PintaBot {
       throw new Error("Create bot before run");
     }
 
-    this.bot.on(ctx => {
-      console.log("RESPONSE!");
+    // this.bot.on(ctx => {
+    //   console.log("RESPONSE!");
 
-      ctx.reply("Hello!");
+    //   ctx.reply("Hello!");
+    // });
+
+    this.bot.command("start", ctx => {
+      ctx.reply("Hello");
     });
   }
 }
