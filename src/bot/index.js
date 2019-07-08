@@ -1,5 +1,6 @@
 const Bot = require("node-vk-bot-api");
 const vkApi = require("node-vk-bot-api/lib/api");
+const Stage = require("node-vk-bot-api/lib/stage");
 const Session = require("node-vk-bot-api/lib/session");
 const Markup = require("node-vk-bot-api/lib/markup");
 
@@ -31,19 +32,12 @@ class PintaBot {
     });
   }
 
-  setupStages(stages) {
-    stages.map(stage => {
-      this.bot.use(this.session.middleware());
-      this.bot.use(stage.middleware());
-    });
-  }
-
   async setupCommands() {
-    this.bot.event("message_new", ctx => {
-      ctx.reply("Hi");
-    });
     this.bot.command("/pinta_party", ctx => {
       ctx.scene.enter("pinta_party");
+    });
+    this.bot.command("start", ctx => {
+      ctx.scene.enter("hello");
     });
     this.bot.event("PintaBot", async ctx => {
       const userId = ctx.message.from_id;
@@ -51,11 +45,9 @@ class PintaBot {
 
       const userName = getUserName(response, userId);
       ctx.reply(
-        `Hi, ${userName}! You can choose button or ask me question`,
+        `Hi, ${userName}! You can choose "/pinta_party" button to create event or ask me question.`,
         null,
-        Markup.keyboard([
-          Markup.button("Create Event", null, "pinta_party")
-        ]).oneTime()
+        Markup.keyboard([Markup.button("/pinta_party")]).oneTime()
       );
     });
   }
@@ -65,7 +57,8 @@ class PintaBot {
       throw new Error("Create bot before run");
     }
 
-    this.setupStages(this.stages);
+    this.bot.use(this.session.middleware());
+    this.bot.use(this.stages.middleware());
     this.setupCommands();
 
     this.bot.startPolling(() => {
