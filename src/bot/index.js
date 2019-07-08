@@ -50,6 +50,14 @@ class PintaBot {
         Markup.keyboard([Markup.button("/pinta_party")]).oneTime()
       );
     });
+    this.bot.event("message_new", async ctx => {
+      const userId = ctx.message.from_id;
+      const { response } = await this.getUsersProfile(userId);
+
+      const userName = getUserName(response, userId);
+      ctx.reply("😳");
+      ctx.reply(`Sorry, ${userName}. Try again, I don't understand!`);
+    });
   }
 
   runBot() {
