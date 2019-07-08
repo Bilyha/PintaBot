@@ -50,6 +50,9 @@ class PintaBot {
         Markup.keyboard([Markup.button("/pinta_party")]).oneTime()
       );
     });
+    this.bot.event(["Hi", "Hello", "Hey"], ctx => {
+      ctx.reply(`Hi, type PintaBot to start!`);
+    });
     this.bot.event("message_new", async ctx => {
       const userId = ctx.message.from_id;
       const { response } = await this.getUsersProfile(userId);
