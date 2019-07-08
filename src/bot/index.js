@@ -5,6 +5,7 @@ const Session = require("node-vk-bot-api/lib/session");
 const Markup = require("node-vk-bot-api/lib/markup");
 
 const { getUserName } = require("../utils/userInfo");
+const createRegExp = require("../utils/createRegexp");
 const stages = require("./stages");
 
 class PintaBot {
@@ -33,13 +34,13 @@ class PintaBot {
   }
 
   async setupCommands() {
-    this.bot.command("/pinta_party", ctx => {
+    this.bot.command(createRegExp("/pinta_party"), ctx => {
       ctx.scene.enter("pinta_party");
     });
     this.bot.command("start", ctx => {
       ctx.scene.enter("hello");
     });
-    this.bot.event("PintaBot", async ctx => {
+    this.bot.event(createRegExp("Go"), async ctx => {
       const userId = ctx.message.from_id;
       const { response } = await this.getUsersProfile(userId);
 
@@ -50,8 +51,8 @@ class PintaBot {
         Markup.keyboard([Markup.button("/pinta_party")]).oneTime()
       );
     });
-    this.bot.event(["Hi", "Hello", "Hey"], ctx => {
-      ctx.reply(`Hi, type PintaBot to start!`);
+    this.bot.event(createRegExp(["Hi", "Hello", "Hey"]), ctx => {
+      ctx.reply(`Hi, type Go to start!`);
     });
     this.bot.event("message_new", async ctx => {
       const userId = ctx.message.from_id;
