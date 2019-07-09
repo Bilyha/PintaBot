@@ -1,5 +1,5 @@
 const isStringWithHand = (str = "") => {
-  const result = str.search(/✋🏻/);
+  const result = str.search(/✋🏻|✋/);
 
   return result !== -1;
 };
